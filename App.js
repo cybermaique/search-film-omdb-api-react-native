@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { Text, View, TextInput, ScrollView, Image, TouchableHighlight } from 'react-native';
+import { Text, View, TextInput, ScrollView, Image, TouchableHighlight, Modal } from 'react-native';
 
 import styles from './src/components/styles'
 
 export default function App() {
-  const apiurl = "http://www.omdbapi.com/?i=tt3896198&apikey=f1714670"
+  const apiurl = "http://www.omdbapi.com/?apikey=f1714670"
   const [state, setState] = useState({
     s: "Enter a movie...",
     results: [],
@@ -23,7 +23,7 @@ export default function App() {
   }
 
   const openPopup = id => {
-    axios(apiurl + "&i" + id).then(({ data }) => {
+    axios(apiurl + "&i=" + id).then(({ data }) => {
       let result = data;
       console.log(result);
       setState(prevState => {
@@ -48,8 +48,7 @@ export default function App() {
         {state.results.map(result => ( //puxa filme pesquisado
         <TouchableHighlight 
           key={result.imdbID} 
-          onPress = {() => openPopup(result.imdbID)}
-          >
+          onPress = {() => openPopup(result.imdbID)}>
             <View style={styles.result}>
               <Image 
                 source={{ uri: result.Poster }} //puxa imagem do filme
@@ -66,6 +65,26 @@ export default function App() {
           </TouchableHighlight>
         ))}
       </ScrollView>
+
+      {/* Exibir o conteúdo de modal somente se satisfazer os critérios abaixo. No caso, quando o tipo do titulo 
+          selecionado for diferente de undefined, exibir HelloWorld com efeitos fade */}
+      <Modal 
+        animationType='fade'
+        transparent={false}
+        visible={(typeof state.selected.Title != "undefined") ? true : false}>
+        <View style={styles.popup}>
+          <Text style={styles.popupTitle}>{state.selected.Title}</Text>
+          <Text style={{marginBottom: 20}}>Rating: {state.selected.imdbRating}</Text>
+          <Text>{state.selected.Plot}</Text>
+        </View>
+        <TouchableHighlight
+          onPress={() => setState(prevState => {
+            return { ...prevState, selected: {} }
+          })}
+        >
+          <Text style={styles.closeBtn}>Close</Text>
+        </TouchableHighlight>
+      </Modal>
     </View>
   );
 }
