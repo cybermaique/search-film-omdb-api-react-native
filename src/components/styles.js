@@ -38,5 +38,26 @@ export default StyleSheet.create({
       fontWeight: '700',
       padding: 20,
       backgroundColor: '#445565'
+    },
+    popup:{
+      padding: 20
+    },
+    popupTitle: {
+      fontSize: 24,
+      fontWeight: '700',
+      marginBottom: 5
+    },
+    popupDescription:{
+      fontSize: 12,
+      fontWeight: '700',
+      marginBottom: 5
+    },
+    closeBtn: {
+      padding: 20,
+      fontSize: 20,
+      color: '#FFF',
+      fontWeight: '700',
+      backgroundColor: '#2484C4'
     }
+    
   });

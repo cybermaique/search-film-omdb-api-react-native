@@ -7,7 +7,7 @@ import styles from './src/components/styles'
 export default function App() {
   const apiurl = "http://www.omdbapi.com/?apikey=f1714670"
   const [state, setState] = useState({
-    s: "Enter a movie...",
+    s: "Nome do filme",
     results: [],
     selected: {}
   });
@@ -34,7 +34,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Search Movie:</Text>
+      <Text style={styles.title}>Pesquisar filme:</Text>
       <TextInput //entrada de texto (search)
         style={styles.searchbox}
         onChangeText={text => setState(prevState => {
@@ -47,8 +47,9 @@ export default function App() {
       <ScrollView style={styles.results}>
         {state.results.map(result => ( //puxa filme pesquisado
         <TouchableHighlight 
-          key={result.imdbID} 
-          onPress = {() => openPopup(result.imdbID)}>
+          key = {result.imdbID} 
+          onPress = {
+            () => openPopup(result.imdbID)}>
             <View style={styles.result}>
               <Image 
                 source={{ uri: result.Poster }} //puxa imagem do filme
@@ -75,9 +76,9 @@ export default function App() {
         <View style={styles.popup}>
           <Text style={styles.popupTitle}>{state.selected.Title}</Text>
           <Text style={{marginBottom: 20}}>Rating: {state.selected.imdbRating}</Text>
-          <Text>{state.selected.Plot}</Text>
+          <Text style={styles.popupDescription}>Descrição: {state.selected.Plot}</Text> 
         </View>
-        <TouchableHighlight
+        <TouchableHighlight //Quando apertar o close, setar State para o state anterior, retornando para a tela inicial
           onPress={() => setState(prevState => {
             return { ...prevState, selected: {} }
           })}
