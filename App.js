@@ -7,7 +7,7 @@ import styles from './src/components/styles'
 export default function App() {
   const apiurl = "http://www.omdbapi.com/?apikey=f1714670"
   const [state, setState] = useState({
-    s: "Nome do filme",
+    s: "Pesquisar Filme 🔎",
     results: [],
     selected: {}
   });
@@ -34,9 +34,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Pesquisar filme:</Text>
       <TextInput //entrada de texto (search)
-        style={styles.searchbox}
+        style={styles.searchBox}
         onChangeText={text => setState(prevState => {
           return{...prevState, s: text} //ao clicar no box de pesquisa, conseguimos deletar o texto padrão e digitar 
         })}
@@ -48,20 +47,20 @@ export default function App() {
         {state.results.map(result => ( //puxa filme pesquisado
         <TouchableHighlight 
           key = {result.imdbID} 
-          onPress = {
-            () => openPopup(result.imdbID)}>
+          onPress = {() => openPopup(result.imdbID)}>
             <View style={styles.result}>
+              <Text style={styles.heading}>
+                {result.Title}
+              </Text>
               <Image 
                 source={{ uri: result.Poster }} //puxa imagem do filme
                 style={{
                   width: '100%', //tamanho imagem
-                  height: 300
+                  height: 450
                 }}
                 resizeMode="cover"
               />
-              <Text style={styles.heading}>
-                {result.Title}
-              </Text> 
+               
             </View>
           </TouchableHighlight>
         ))}
@@ -75,8 +74,8 @@ export default function App() {
         visible={(typeof state.selected.Title != "undefined") ? true : false}>
         <View style={styles.popup}>
           <Text style={styles.popupTitle}>{state.selected.Title}</Text>
-          <Text style={{marginBottom: 20}}>Rating: {state.selected.imdbRating}</Text>
-          <Text style={styles.popupDescription}>Descrição: {state.selected.Plot}</Text> 
+          <Text style={styles.popRatio}>Rating: {state.selected.imdbRating}</Text>
+          <Text style={styles.popupDescription}>{state.selected.Plot}</Text> 
         </View>
         <TouchableHighlight //Quando apertar o close, setar State para o state anterior, retornando para a tela inicial
           onPress={() => setState(prevState => {

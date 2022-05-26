@@ -3,26 +3,20 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#223343',
+      backgroundColor: '#33302F',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      paddingTop: 70
+      paddingTop: 20
     },
-    title: {
-      color: '#fff',
-      fontSize: 32,
-      fontWeight: '700',
-      textAlign: 'center',
-      marginBottom: 20
-    },
-    searchbox: {
+    searchBox: {
       fontSize: 20,
-      fontWeight: '300',
-      padding: 20,
-      width: '100%',
-      backgroundColor: '#FFF',
-      borderRadius: 8,
-      marginBottom: 40
+      fontWeight: 'bold',
+      color: 'white',
+      padding: 10,
+      width: '84%',
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      marginTop: 20,
+      marginBottom: 20
     },
     results: {
       flex: 1
@@ -33,31 +27,43 @@ export default StyleSheet.create({
       marginBottom: 20
     },
     heading: {
-      color: '#FFF',
-      fontSize: 18,
-      fontWeight: '700',
-      padding: 20,
-      backgroundColor: '#445565'
+      color: 'white',
+      alignItems: "center",
+      fontSize: 20,
+      fontWeight: '600',
+      textAlign: "center",
+      padding: 5,
+      backgroundColor: 'rgba(255, 5, 5, 0.15)'
     },
     popup:{
       padding: 20
     },
     popupTitle: {
+      textAlign: "center",
       fontSize: 24,
       fontWeight: '700',
-      marginBottom: 5
+      marginBottom: 10
+    },
+    popRatio:{
+      fontSize: 20,
+      fontWeight: '700',
+      marginBottom: 20,
     },
     popupDescription:{
-      fontSize: 12,
-      fontWeight: '700',
+      fontSize: 18,
       marginBottom: 5
     },
     closeBtn: {
-      padding: 20,
-      fontSize: 20,
-      color: '#FFF',
+      padding: 10,
+      fontSize: 15,
+      textAlign: "center",
+      color: 'black',
       fontWeight: '700',
-      backgroundColor: '#2484C4'
+      backgroundColor: 'rgba(255, 5, 5, 0.15)',
+      width: 120,
+      height: 50,
+      // marginLeft: 160,
+      alignSelf: "center"
     }
     
   });
