@@ -3,18 +3,33 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#33302F',
+      // flexDirection: 'row',
+      // backgroundColor: '#33302F',
       alignItems: 'center',
       justifyContent: 'flex-start',
       paddingTop: 20
     },
     searchBox: {
+      // padding: 10,
+      // width: '84%',
+      // flex: 1,
+      // backgroundColor: '#F8F9FA',
+      // // paddingLeft: 40,
+      // marginHorizontal: 20,
+      // borderRadius: 8,
+      // fontSize: 18,
+      // borderColor: '#E4E7EB',
+      // borderWidth: 1
+
       fontSize: 20,
-      fontWeight: 'bold',
-      color: 'white',
+      fontWeight: "130",
+      backgroundColor: '#F8F9FA',
       padding: 10,
-      width: '84%',
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      borderRadius: 8,
+      borderWidth: 1,
+      borderColor: '#E4E7EB',
+      width: 300,
+      height: 40,
       marginTop: 20,
       marginBottom: 20
     },
@@ -27,13 +42,13 @@ export default StyleSheet.create({
       marginBottom: 20
     },
     heading: {
-      color: 'white',
+      color: 'black',
       alignItems: "center",
       fontSize: 20,
       fontWeight: '600',
       textAlign: "center",
       padding: 5,
-      backgroundColor: 'rgba(255, 5, 5, 0.15)'
+      backgroundColor: 'rgba(120, 220, 99, 1)'
     },
     popup:{
       padding: 20
@@ -64,6 +79,11 @@ export default StyleSheet.create({
       height: 50,
       // marginLeft: 160,
       alignSelf: "center"
+    },
+    iconSearch:{
+      position: "absolute",
+      right: 5,
+      top: 27
     }
     
   });
