@@ -22,14 +22,14 @@ export default StyleSheet.create({
       // borderWidth: 1
 
       fontSize: 20,
-      fontWeight: "130",
+      fontWeight: "10",
       backgroundColor: '#F8F9FA',
       padding: 10,
-      borderRadius: 8,
+      borderRadius: 6,
       borderWidth: 1,
       borderColor: '#E4E7EB',
-      width: 300,
-      height: 40,
+      width: 350,
+      height: 45,
       marginTop: 20,
       marginBottom: 20
     },
@@ -83,7 +83,7 @@ export default StyleSheet.create({
     iconSearch:{
       position: "absolute",
       right: 5,
-      top: 27
+      top: 30
     }
     
   });

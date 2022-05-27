@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'; //biblioteca que faz as requisições
 import React, { useState } from 'react'
 import { Text, View, TextInput, ScrollView, Image, TouchableHighlight, Modal } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons'; 
@@ -16,7 +16,6 @@ export default function App() {
   const search = () => {
     axios(apiurl + "&s=" + state.s).then(({ data }) => {
       let results = data.Search
-
       setState(prevState => {
         return { ...prevState, results: results }
       })
@@ -56,7 +55,7 @@ export default function App() {
           onPress = {() => openPopup(result.imdbID)}>
             <View style={styles.result}>
               <Text style={styles.heading}>
-                {result.Title}
+                {[result.Title," - ", result.Year]}
               </Text>
               <Image 
                 source={{ uri: result.Poster }} //puxa imagem do filme
@@ -82,6 +81,7 @@ export default function App() {
           <Text style={styles.popupTitle}>{state.selected.Title}</Text>
           <Text style={styles.popRatio}>Rating: {state.selected.imdbRating}</Text>
           <Text style={styles.popupDescription}>{state.selected.Plot}</Text> 
+          <Text style={styles.popupDescription}>{state.selected.Year}</Text> 
         </View>
         <TouchableHighlight //Quando apertar o close, setar State para o state anterior, retornando para a tela inicial
           onPress={() => setState(prevState => {
